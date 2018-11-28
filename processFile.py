@@ -88,6 +88,21 @@ print()
 for user in userDict:
     userDict[user].printInfo()
 
+if len(checkWordCount) > 0:
+    #Print rankings of people who said each word
+    print()
+    for word in checkWordCount:
+        print("--------------" + "Rankings: " + word + "--------------")
+        #Print in descending sorted order by count
+        for userId in sorted(userDict, key=lambda uid: userDict[uid].wordDict[word][0], reverse=True):
+            user = userDict[userId]
+            wordCount = user.wordDict[word][0]
+            #Word count / total messages sent
+            wordPercentage = wordCount / float(user.numMessages) * 100
+            outputTemplate = "{0:20s}: {1:4d} times, {2:8.3f}% of {3:5d} messages sent"
+            print(outputTemplate.format(user.name, wordCount, wordPercentage, user.numMessages))
+        print()
+
 print("\n" + "Total Messages Processed: " + str(totalMessageCount) + "\n")
 
 import graph
