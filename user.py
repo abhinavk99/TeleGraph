@@ -113,8 +113,8 @@ class UserData(object):
         for word in words:
             if word not in self.wordDict:
                 self.wordDict[word] = [0, ActivityInfo()]
-            if word in message:
-                numOccurences = message.count(word)
+            if word.lower() in message:
+                numOccurences = message.count(word.lower())
                 self.wordDict[word][0] += numOccurences
                 self.wordDict[word][1].updateActivity(messageData['date'])
 
