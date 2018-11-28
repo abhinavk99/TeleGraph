@@ -2,7 +2,6 @@ import os, sys, json, user
 from user import UserData
 from start import fileName, trackWordUsage, hourRange, keyWords, ignoreByPeerID, includeOnlyByPeerID
 
-os.chdir(os.path.dirname(sys.argv[0]))
 file = open(fileName, encoding = "utf8")
 sys.stdout = open("fullStats.txt", "w", encoding = "utf8") #Redirect all print statements to this text file
 
